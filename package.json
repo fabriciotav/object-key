@@ -1,0 +1,30 @@
+{
+  "name": "object-key",
+  "version": "0.1.0",
+  "description": "Object key helpers",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha test --timeout 15000 --recursive --reporter list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabriciotav/object-key.git"
+  },
+  "keywords": [
+    "object",
+    "key",
+    "property"
+  ],
+  "author": "Fabrício Tavares",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabriciotav/object-key/issues"
+  },
+  "homepage": "https://github.com/fabriciotav/object-key",
+  "dependencies": {
+    "lodash": "4.2.1"
+  },
+  "devDependencies": {
+    "mocha": "2.4.5"
+  }
+}
