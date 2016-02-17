@@ -19,8 +19,8 @@ var path = 'foo.bar.baz';
 var path2 = 'foo.barBar.baz';
 var obj = {};
 
-ok.assign(path, 'some value', obj);  // { foo: { bar: { baz: 'some value' }}}
-ok.assign(path2, 'some value', obj, 'kebab');  // { foo: { 'bar-bar': { baz: 'some value' }}}
+ok.assign(obj, path, 'some value');  // { foo: { bar: { baz: 'some value' }}}
+ok.assign(obj, path2, 'some value', 'kebab');  // { foo: { 'bar-bar': { baz: 'some value' }}}
 ```
 
 ### ok.lookup(key, hash)

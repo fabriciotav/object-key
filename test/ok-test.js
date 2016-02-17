@@ -3,27 +3,27 @@ const ok = require('../index');
 
 describe('assign', function() {
   it('single', function() {
-    assert.deepEqual({ random: 'value' }, ok.assign('random', 'value', {}));
+    assert.deepEqual({ random: 'value' }, ok.assign({}, 'random', 'value'));
   });
 
   it('single', function() {
-    assert.deepEqual({ randomValue: 'value' }, ok.assign('randomValue', 'value', {}));
+    assert.deepEqual({ randomValue: 'value' }, ok.assign({}, 'randomValue', 'value'));
   });
 
   it('nested', function() {
-    assert.deepEqual({ foo: { bar: { baz: 'value' }}}, ok.assign('foo.bar.baz', 'value', {}, 'kebab'));
+    assert.deepEqual({ foo: { bar: { baz: 'value' }}}, ok.assign({}, 'foo.bar.baz', 'value', 'kebab'));
   });
 
   it('kebabCase', function() {
-    assert.deepEqual({ 'random-value': 'value' }, ok.assign('randomValue', 'value', {}, 'kebab'));
+    assert.deepEqual({ 'random-value': 'value' }, ok.assign({}, 'randomValue', 'value', 'kebab'));
   });
 
   it('camelCase', function() {
-    assert.deepEqual({ randomValue: 'value' }, ok.assign('random_value', 'value', {}, 'camel'));
+    assert.deepEqual({ randomValue: 'value' }, ok.assign({}, 'random_value', 'value', 'camel'));
   });
 
   it('snakeCase', function() {
-    assert.deepEqual({ random_value: 'value' }, ok.assign('random_value', 'value', {}, 'snake'));
+    assert.deepEqual({ random_value: 'value' }, ok.assign({}, 'random_value', 'value', 'snake'));
   });
 });
 

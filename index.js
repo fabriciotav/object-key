@@ -17,7 +17,7 @@ if (typeof module === 'object' && module.exports) {
    *
    * @return {object}
    */
-  ok.assign = function assign(key, value, hash, stringCase) {
+  ok.assign = function assign(object, path, value, stringCase) {
     var convertCase;
 
     switch(stringCase) {
@@ -35,39 +35,11 @@ if (typeof module === 'object' && module.exports) {
         break;
     }
 
-    let keys = key.split('.');
+    let keys = path.split('.');
     keys = _.map(keys, convertCase);
-    let elapsedIdx = [];
+    keys = keys.join('.');
   
-    if (keys.length === 1) {
-      hash[keys[0]] = value;
-      return hash;
-    }
-  
-    for (let i = 0; i < keys.length; i++) {
-      elapsedIdx.push(i);
-      if (i !== keys.length - 1) {
-  
-        if (_.isPlainObject(hash[keys[i]]) === false) {
-          let nestedValue = 'hash';
-          elapsedIdx.forEach((idx) => { nestedValue += '[keys[' + idx + ']]'});
-          nestedValue += '= {}';
-
-          // TODO-->> Find alternative for `eval`
-          eval(nestedValue);
-        }
-  
-      } else {
-        let leafValue = 'hash';
-        elapsedIdx.forEach((idx) => { leafValue += '[keys[' + idx + ']]'});
-        leafValue += '= value';
-
-        // TODO-->> Find alternative for `eval`
-        eval(leafValue);
-      }
-    }
-  
-    return hash;
+    return _.set(object, keys, value);
   }
 
   /**
